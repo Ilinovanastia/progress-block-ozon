@@ -1,0 +1,197 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 20px;
+    position: relative;
+    background: white;
+    margin: 20px;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background-image: url("data:image/svg+xml;utf8,<svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><rect width='100%' height='100%' style='fill: none; stroke: rgb(163,200,255); stroke-width: 4; stroke-dasharray: 45 15'/></svg>");
+    pointer-events: none;
+    z-index: -1;
+}
+
+.progress-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 95vh;
+}
+
+.progress-block__title {
+    margin-bottom: 20px;
+    position: absolute;
+    top: 40px;
+    left: 15px;
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.progress-block__diagram {
+    margin-bottom: 20px;
+}
+
+.progress-block__diagram-circle {
+    width: 200px;
+    height: 200px;
+}
+
+.progress-block__diagram-circle-bg {
+    fill: none;
+    stroke: #eaf0f6;
+    stroke-width: 8;
+}
+
+.progress-block__diagram-circle-progress {
+    fill: none;
+    stroke: rgb(0,92,255);
+    stroke-width: 8;
+    stroke-linecap: square;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+
+.progress-block__controls {
+   padding: 15px;
+}
+
+.progress-block__controls-value,
+.progress-block__controls-animate,
+.progress-block__controls-hide {
+    margin-bottom: 8px;
+}
+
+.progress-block__controls-value:last-child,
+.progress-block__controls-animate:last-child,
+.progress-block__controls-hide:last-child {
+    margin-bottom: 0;
+}
+
+.progress-block__controls-value p,
+.progress-block__controls-animate p,
+.progress-block__controls-hide p {
+    margin-left: 5px;
+}
+
+.progress-block__controls-value, .progress-block__controls-animate, .progress-block__controls-hide {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.progress-block__controls-value input, .progress-block__controls-animate input, .progress-block__controls-hide input {
+    margin-right: 25px;
+}
+
+.progress-block__controls-value p, .progress-block__controls-animate p, .progress-block__controls-hide p, .progress-block__title{
+    font-weight: bold;
+}
+
+input[type="number"] {
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    position: relative;
+    width: 60px;
+    height: 36px;
+    border-radius: 25px;
+    border-color: #202020;
+    background-color: #ffffff;
+    transition: background .3s;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    position: relative;
+    width: 60px;
+    height: 36px;
+    border-radius: 25px;
+    background-color: #dae6ec;
+    transition: background .3s;
+    outline: none;
+    cursor: pointer;
+}
+
+input[type="checkbox"]::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+}
+
+input[type="checkbox"]::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: white;
+    transition: left .3s;
+}
+
+input:checked {
+    background-color: rgb(0,92,255);
+}
+
+input:checked::after {
+    left: 70%;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.animated {
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(-90deg); }
+    to { transform: rotate(270deg); }
+}
+
+@media (orientation: landscape) {
+    body {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px;
+    }
+    
+    .progress-block__diagram-circle {
+        width: 160px;
+        height: 160px;
+        margin: 0;
+    }
+    
+    .progress-block__controls {
+        padding: 0;
+    }
+    
+    .progress-block__controls-value,
+    .progress-block__controls-animate,
+    .progress-block__controls-hide {
+        padding: 8px;
+    }
+}

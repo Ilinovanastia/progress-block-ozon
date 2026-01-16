@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="progress-block" id="progressContainer">
+        <div class="progress-block__title">Progress</div>
+        <div class="progress-block__diagram">
+            <svg class="progress-block__diagram-circle" viewBox="0 0 100 100">
+                <circle class="progress-block__diagram-circle-bg" cx="50" cy="50" r="45" />
+                <circle class="progress-block__diagram-circle-progress" 
+                        cx="50" cy="50" r="45" />
+            </svg>
+        </div>
+        <div class="progress-block__controls">
+            <div class="progress-block__controls-value">
+                <input type="number" min="0" max="100" value="0" id="progressValue">
+                <p>Value</p>
+            </div>
+            <div class="progress-block__controls-animate">
+                <input type="checkbox" id="animateValue">
+                <p>Animate</p>
+            </div>
+            <div class="progress-block__controls-hide">
+                <input type="checkbox" id="hideValue">
+                <p>Hide</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"> </script>
+    <script>
+        const svg = document.querySelector('.progress-block__diagram-circle');
+        const progressBar = document.querySelector('.progress-block__diagram-circle-progress');
+        const container = document.getElementById('progressContainer');
+        const progress = new ProgressAPI({
+            svg: svg,
+            progressBar: progressBar,
+            container: container
+        });
+
+        document.getElementById('progressValue').addEventListener('input', function(e) {
+            progress.setValue(e.target.value);
+        });
+        
+        document.getElementById('animateValue').addEventListener('change', function(e) {
+            progress.setAnimate(e.target.checked);
+        });
+        
+        document.getElementById('hideValue').addEventListener('change', function(e) {
+            progress.setHidden(e.target.checked);
+        });
+        
+        progress.setValue(45);
+        document.getElementById('progressValue').value = 45;
+        
+        window.progress = progress;
+    </script>
+</body>
+</html>
