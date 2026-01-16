@@ -14,7 +14,7 @@ class ProgressAPI {
     setValue(value) {
         if (!this.progressBar) return this;
         const val = Math.max(0, Math.min(100, value));
-        const offset = this.circumference - (val / 100) * this.circumference;
+        const offset = this.circumference * (1 - val * 0.01);
         this.progressBar.style.strokeDashoffset = offset;
         return this;
     }
