@@ -6,3 +6,4 @@ git clone https://github.com/Ilinovanastia/progress-block-ozon.git
 
 2. Откройте index.html в браузере
    
+Приложение доступно по ссылке: https://ilinovanastia.github.io/progress-block-ozon/
