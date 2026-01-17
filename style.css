@@ -92,15 +92,18 @@ body::before {
     flex-direction: row;
     padding: 10px;
     align-items: center; 
+    width: 200px;
 }
 
 .progress-block__controls-value input, .progress-block__controls-animate input, .progress-block__controls-hide input {
     margin-right: 25px;
+    min-width: 65px;
 }
 
 .progress-block__controls-value p, .progress-block__controls-animate p, .progress-block__controls-hide p, .progress-block__title{
     font-weight: bold;
     align-items: center;
+    width: 80px;
 }
 
 input[type="number"] {
